@@ -25,15 +25,31 @@ const wFormsAjaxProcessor = {
         const originalText = submitBtn.value;
         submitBtn.value = 'Please wait...';
         submitBtn.disabled = true;
+
         try {
             const response = await fetch('https://perkinsschool.tfaforms.net/api_v2/workflow/processor', {
                 method: 'POST',
                 body: formData
             });
+
             if (!response.ok) throw new Error();
             const responseData = await response.text();
             const parser = new DOMParser();
             const doc = parser.parseFromString(responseData, 'text/html');
+
+            // Add screen reader announcement after successful response
+            setTimeout(() => {
+                const thankYouElement = document.getElementById('wFormThankYouPage');
+                if (thankYouElement) {
+                    // Add role and aria-live region for screen readers
+                    thankYouElement.setAttribute('role', 'region');
+                    thankYouElement.setAttribute('aria-label', 'Thank you message');
+                    
+                    // Announce content to screen readers
+                    announceToScreenReaders(thankYouElement);
+                }
+            }, 100);
+
             return Array.from(doc.body.childNodes);
         } catch (error) {
             throw new Error('Failed to process form submission');
@@ -43,6 +59,17 @@ const wFormsAjaxProcessor = {
         }
     }
 };
+
+// Function to announce content to screen readers
+function announceToScreenReaders(element) {
+    const announcementRegion = document.createElement('div');
+    announcementRegion.setAttribute('role', 'alert');
+    announcementRegion.setAttribute('aria-live', 'polite');
+    announcementRegion.textContent = element.textContent;
+    
+    document.body.appendChild(announcementRegion);
+    setTimeout(() => announcementRegion.remove(), 1000);
+}
 
 // reCAPTCHA Setup module
 const wFormsRecaptcha = {
