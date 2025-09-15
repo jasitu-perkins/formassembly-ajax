@@ -50,6 +50,17 @@ const wFormsAjaxProcessor = {
                 }
             }, 100);
 
+            // Prefer returning only the thank-you content or form container to avoid leaking full-page markup
+            const thankYouFromResponse = doc.getElementById('wFormThankYouPage');
+            if (thankYouFromResponse) {
+                return [thankYouFromResponse];
+            }
+
+            const formContainerFromResponse = doc.querySelector('.wFormContainer');
+            if (formContainerFromResponse) {
+                return [formContainerFromResponse];
+            }
+
             return Array.from(doc.body.childNodes);
         } catch (error) {
             throw new Error('Failed to process form submission');
@@ -66,6 +77,12 @@ function announceToScreenReaders(element) {
     announcementRegion.setAttribute('role', 'alert');
     announcementRegion.setAttribute('aria-live', 'polite');
     announcementRegion.textContent = element.textContent;
+    // Visually hide but keep available to assistive tech
+    announcementRegion.style.position = 'absolute';
+    announcementRegion.style.left = '-9999px';
+    announcementRegion.style.width = '1px';
+    announcementRegion.style.height = '1px';
+    announcementRegion.style.overflow = 'hidden';
     
     document.body.appendChild(announcementRegion);
     setTimeout(() => announcementRegion.remove(), 1000);
@@ -139,6 +156,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (!isNoAjax && submitBtn) {
                     const elements = await wFormsAjaxProcessor.processForm(submitBtn, new FormData(form));
                     const responseContainer = document.createElement('div');
+                    // Preserve original container classes/ID to maintain layout/styles
+                    responseContainer.className = container.className;
+                    if (container.id) {
+                        responseContainer.id = container.id;
+                    }
                     elements.forEach(element => {
                         responseContainer.appendChild(element.cloneNode(true));
                     });
