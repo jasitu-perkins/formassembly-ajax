@@ -279,15 +279,15 @@
         });
     </script>
 
-    <link href="https://perkinsschool.tfaforms.net/dist/form-builder/5.0.0/wforms-layout.css?v=f76570e293e5b449f147e3abf9a49666a36ca00b" rel="stylesheet" type="text/css" />
+    <link href="https://perkinsschool.tfaforms.net/dist/form-builder/5.0.0/wforms-layout.css?v=b0dfb0724812f9c2437578e3d01a1ce3b3c2c6e6" rel="stylesheet" type="text/css" />
 
     <link href="https://perkinsschool.tfaforms.net/uploads/themes/theme-21.css" rel="stylesheet" type="text/css" />
-    <link href="https://perkinsschool.tfaforms.net/dist/form-builder/5.0.0/wforms-jsonly.css?v=f76570e293e5b449f147e3abf9a49666a36ca00b" rel="alternate stylesheet" title="This stylesheet activated by javascript" type="text/css" />
-    <script type="text/javascript" src="https://perkinsschool.tfaforms.net/wForms/3.11/js/wforms.js?v=f76570e293e5b449f147e3abf9a49666a36ca00b"></script>
+    <link href="https://perkinsschool.tfaforms.net/dist/form-builder/5.0.0/wforms-jsonly.css?v=b0dfb0724812f9c2437578e3d01a1ce3b3c2c6e6" rel="alternate stylesheet" title="This stylesheet activated by javascript" type="text/css" />
+    <script type="text/javascript" src="https://perkinsschool.tfaforms.net/wForms/3.11/js/wforms.js?v=b0dfb0724812f9c2437578e3d01a1ce3b3c2c6e6"></script>
     <script type="text/javascript">
         wFORMS.behaviors.prefill.skip = false;
     </script>
-        <script type="text/javascript" src="https://perkinsschool.tfaforms.net/wForms/3.11/js/localization-en_US.js?v=f76570e293e5b449f147e3abf9a49666a36ca00b"></script>
+        <script type="text/javascript" src="https://perkinsschool.tfaforms.net/wForms/3.11/js/localization-en_US.js?v=b0dfb0724812f9c2437578e3d01a1ce3b3c2c6e6"></script>
 
 <!-- FORM: BODY SECTION -->
 <div class="wFormContainer" >
@@ -297,10 +297,14 @@
 <h3 class="wFormTitle" data-testid="form-title" id="13-T">Multiform accessibility test</h3>
 <form method="post" action="https://perkinsschool.tfaforms.net/api_v2/workflow/processor" class="hintsBelow labelsAbove" id="13" enctype="multipart/form-data">
 <div class="oneField field-container-D    " id="tfa_1-D">
-<label id="tfa_1-L" class="label preField " for="tfa_1">Text Input</label><br><div class="inputWrapper"><input type="text" id="tfa_1" name="tfa_1" value="" title="Text Input" class=""></div>
+<label id="tfa_1-L" class="label preField " for="tfa_1">Text Input</label><br><div class="inputWrapper">
+<input type="text" id="tfa_1" name="tfa_1" value="" aria-describedby="tfa_1-HH" title="Text Input" class=""><span class="field-hint-inactive" id="tfa_1-H"><span id="tfa_1-HH" class="hint">hint for question 1</span></span>
+</div>
 </div>
 <div class="oneField field-container-D    " id="tfa_2-D">
-<label id="tfa_2-L" class="label preField " for="tfa_2">Text Area</label><br><div class="inputWrapper"><textarea id="tfa_2" name="tfa_2" title="Text Area" class=""></textarea></div>
+<label id="tfa_2-L" class="label preField " for="tfa_2">Text Area</label><br><div class="inputWrapper">
+<textarea aria-describedby="tfa_2-HH" id="tfa_2" name="tfa_2" title="Text Area" class=""></textarea><span class="field-hint-inactive" id="tfa_2-H"><span id="tfa_2-HH" class="hint">hint for question 2</span></span>
+</div>
 </div>
 <div class="oneField field-container-D    " id="tfa_3-D">
 <label id="tfa_3-L" class="label preField " for="tfa_3">File Upload</label><br><div class="inputWrapper"><input type="file" id="tfa_3" name="tfa_3" size="" title="File Upload" class=""></div>
@@ -351,7 +355,7 @@
 <input type="submit" data-label="Submit" class="primaryAction" id="submit_button" value="Submit">
 </div>
 <div style="clear:both"></div>
-<input type="hidden" value="13" name="tfa_dbFormId" id="tfa_dbFormId"><input type="hidden" value="" name="tfa_dbResponseId" id="tfa_dbResponseId"><input type="hidden" value="f21344abe3916ae1116d1c86cd8752cc" name="tfa_dbControl" id="tfa_dbControl"><input type="hidden" value="" name="tfa_dbWorkflowSessionUuid" id="tfa_dbWorkflowSessionUuid"><input type="hidden" value="2" name="tfa_dbVersionId" id="tfa_dbVersionId"><input type="hidden" value="" name="tfa_switchedoff" id="tfa_switchedoff">
+<input type="hidden" value="13" name="tfa_dbFormId" id="tfa_dbFormId"><input type="hidden" value="" name="tfa_dbResponseId" id="tfa_dbResponseId"><input type="hidden" value="f21344abe3916ae1116d1c86cd8752cc" name="tfa_dbControl" id="tfa_dbControl"><input type="hidden" value="" name="tfa_dbWorkflowSessionUuid" id="tfa_dbWorkflowSessionUuid"><input type="hidden" value="3" name="tfa_dbVersionId" id="tfa_dbVersionId"><input type="hidden" value="" name="tfa_switchedoff" id="tfa_switchedoff">
 </form>
 </div></div><div class="wFormFooter"><p class="supportInfo"><a target="new" class="contactInfoLink" href="https://perkinsschool.tfaforms.net/forms/help/13" data-testid="contact-info-link">Contact Information</a><br></p></div>
   <p class="supportInfo" >
